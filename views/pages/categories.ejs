@@ -1,0 +1,16 @@
+<%- include("../partials/head") %>
+<%- include("../partials/navbar") %>
+<main class="container">
+<div class="row">
+    <div class="col-lg-12">
+      <% if(categories.length == 0){  %>
+        <h1 class="mt-4 h4 text-muted">Il n'y a pas de catégories</h1>
+        <%  } else { %>
+        <h1 class="mt-4 h4" >Categories List <span class=" badage badge-pill badge-primary"><%=categories.length %></span></h1>
+        <% categories.map((categorie,index) => { %>
+        <a href="/blog/categorie/<%=categorie._id %>" class="badge badge-primary"><%=categorie.title %></a>
+          <% }) } %>
+    </div>
+</div>
+</main>
+<%- include("../partials/footer") %>

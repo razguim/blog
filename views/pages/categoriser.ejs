@@ -1,0 +1,20 @@
+<%- include("../partials/head") %>
+<%- include("../partials/navbar") %>
+<main class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h1 class="my-4 h3">Créer  une catégorie</h1>
+            <form action="/blog/categoriser" method="post">
+                <div class="form-row">
+                    <div class="form-group col-lg-12">
+                      <label for="titre">Titre</label>
+                      <input type="text" class="form-control" id="titre" name="title">
+                    </div>
+                <button class="btn btn-primary" type="submit">Engistre</button>
+              </div>
+
+            </form>
+        </div>
+    </div>
+</main>
+<%- include("../partials/footer") %>

@@ -1,0 +1,44 @@
+<%- include("../partials/head") %>
+<%- include("../partials/navbar") %>
+<main class="container">
+<div class="row">
+    <div class="col-lg-8">
+      <% if(articles.length == 0){  %>
+        <h1 class="my-4 h3 text-muted">Aucun article dand le blog</h1>
+        <%  } else { %>
+        <h1 class="h3 my-4 ">Published Articles</h1>
+        <% articles.map((article,index) => { %>
+        <div class="card mb-3">
+            <div class="row no-gutters ">
+              <div
+                class="col-md-3">
+                <img src="/images/<%= article.image %>" alt="">
+              </div>
+              <div class="col-md-9">
+                <div class="card-body">
+                  <h4 class="card-title"><a href="/blog/article/<%=article._id %>" ><%=article.title %></a></h4>
+                  <p class="h6">
+                    <%=article.created %> <br />
+                  </p>
+                  
+                  <p class="card-text">
+                    <%=article.content %>
+                  </p>
+                  
+                 
+                </div>
+                <div class="card-footer">
+                  <% if (typeof article.updated != 'undefined' && article.updated.length > 0) { %>
+                    <p>last updated : <%= article.updated %></p>
+                    <% } %>
+                    <a href="/blog/update/<%=article._id %>" class="card-link btn btn-secondary">Update</a>
+                    <a href="/blog/delete/<%=article._id %>" class="card-link btn btn-danger" id="delete-btn">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }) } %>
+    </div>
+</div>
+</main>
+<%- include("../partials/footer") %>

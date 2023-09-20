@@ -1,0 +1,60 @@
+<%- include("../partials/head") %>
+<main class="container">
+  <div class="row">
+    <div class="col-lg-12">
+        <nav aria-label="breadcrumb" class="mt-4 mb-2">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/blog/articles">Home</a></li>
+              <li class="breadcrumb-item"><a href="/blog/categorie/<%=article.category._id %>"><%=article.category.title %></a></li>
+            </ol>
+          </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+    
+      <div class="card" >
+        <div class="card-header">
+          <h1 class="h5 card-title"><%=article.title %></h1>
+          <h6 class="card-subtitle mb-2 text-muted">categorie : <a href="/blog/categorie/<%=article.category._id %>"><%=article.category.title %></a></h6>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%=article.content %></p>
+        </div>
+        <div class="card-footer">
+          <p>published : <%=article.created %></p>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row my-5">
+  <div class="col-lg-8">
+    <form action="/blog/article/<%=article._id %>" method="post">
+      <div class="form-row">
+          <div class="form-group col-lg-12">
+              <textarea class="form-control" id="content" rows="3" name="content"></textarea>                    
+          </div>
+        </div>
+        <div class="d-none">
+          <input type="text"  value="<%= (new Date()).toISOString().split('T')[0];  %>" name="created">                 
+      </div>
+      <button class="btn btn-primary" type="submit">Commenter</button>
+    </div>
+  </div>
+  <% article.comments.map((comment,index)=>{ %>
+  <div class="row my-5">
+    <div class="col-lg-8">
+      <div class="card" >
+        <div class="card-body">
+          <p class="card-text"><%=comment.content %></p>
+        </div>
+        <div class="card-footer">
+          <p><%=comment.created %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }) %> %>
+</div>
+</main>
+<%- include("../partials/footer") %>

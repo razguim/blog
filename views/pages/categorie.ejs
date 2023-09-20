@@ -1,0 +1,35 @@
+<%- include("../partials/head") %>
+<%- include("../partials/navbar") %>
+<main class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="breadcrumb" class="mt-4 mb-2">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/blog/articles">Home</a></li>
+                  <li class="breadcrumb-item"><a href="/blog/categorie/<%=categorie._id %>"><%=categorie.title %></a></li>
+                </ol>
+              </nav>
+        </div>
+    </div>
+<div class="row">
+        <% articles.map((article,index)=>{ %>
+            <div class="col-lg-12 my-4">
+            <div class="card" >
+              <div class="card-header">
+                <h1 class="h5 card-title"><a href="/blog/article/<%=article._id %>"><%=article.title %></a></h1>
+      
+              </div>
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <p class="card-text"><%=article.content %></p>
+              </div>
+              <div class="card-footer">
+                <p>published : <%=article.created %></p>
+              </div>
+            </div>
+
+          </div>
+          <% }) %>
+</div>
+</main>
+<%- include("../partials/footer") %>
